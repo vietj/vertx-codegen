@@ -9,8 +9,6 @@
 > open target/docs/vertx-codegen/java/index.html
 ```
 
-
-
 ## Helper projects
 
 - Codegen CLI: a codegen [CLI](https://github.com/vietj/vertx-codegen-cli) to help code generating files.
@@ -492,7 +490,7 @@ public enum MyEnumWithCustomFactory {
   public String getShortName() {
     return names[0];
   }
-
+  
   public static MyEnumWithCustomFactory of(String pName) {
     for (MyEnumWithCustomFactory item : MyEnumWithCustomFactory.values()) {
       if (item.names[0].equalsIgnoreCase(pName) || item.names[1].equalsIgnoreCase(pName)
@@ -502,7 +500,7 @@ public enum MyEnumWithCustomFactory {
     }
     return DEV;
   }
-
+  
 }
 ```
 You can declare them as public static methods:
