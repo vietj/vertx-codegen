@@ -225,11 +225,14 @@ public class UserProtoConverter {
     return size;
   }
 
-  public static int computeSize2(User obj) {
+  public static int computeSize2(User obj, int[] cache, final int baseIndex) {
     int size = 0;
+    int index = baseIndex + 1;
     if (obj.getAddress() != null) {
       size += CodedOutputStream.computeUInt32SizeNoTag(10);
-      int dataSize = AddressProtoConverter.computeSize(obj.getAddress());
+      int savedIndex = index;
+      index = AddressProtoConverter.computeSize2(obj.getAddress(), cache, index);
+      int dataSize = cache[savedIndex];
       size += CodedOutputStream.computeUInt32SizeNoTag(dataSize);
       size += dataSize;
     }
@@ -260,7 +263,8 @@ public class UserProtoConverter {
     if (obj.getUserName() != null) {
       size += CodedOutputStream.computeStringSize(11, obj.getUserName());
     }
-    return size;
+    cache[baseIndex] = size;
+    return index;
   }
 
 }

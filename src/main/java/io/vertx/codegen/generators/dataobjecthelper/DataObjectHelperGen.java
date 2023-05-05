@@ -254,8 +254,9 @@ public class DataObjectHelperGen extends Generator<DataObjectModel> {
 
     // Compute Size
     {
-      writer.print("  " + visibility + " static int computeSize2(" + simpleName + " obj) {\n");
+      writer.print("  " + visibility + " static int computeSize2(" + simpleName + " obj, int[] cache, final int baseIndex) {\n");
       writer.print("    int size = 0;\n");
+      writer.print("    int index = baseIndex + 1;\n");
       int fieldNumber = 1;
       for (PropertyInfo prop : model.getPropertyMap().values()) {
         ClassKind propKind = prop.getType().getKind();
@@ -268,7 +269,9 @@ public class DataObjectHelperGen extends Generator<DataObjectModel> {
             writer.print("      size += CodedOutputStream." + protoProperty.getProtoType().computeSize() + "(" + fieldNumber + ", obj." + prop.getGetterMethod() + "());\n");
           } else {
             writer.print("      size += CodedOutputStream.computeUInt32SizeNoTag(" + protoProperty.getTag() + ");\n");
-            writer.print("      int dataSize = " + protoProperty.getMessage() + "ProtoConverter.computeSize(obj." + prop.getGetterMethod() + "());\n");
+            writer.print("      int savedIndex = index;\n");
+            writer.print("      index = " + protoProperty.getMessage() + "ProtoConverter.computeSize2(obj." + prop.getGetterMethod() + "(), cache, index);\n");
+            writer.print("      int dataSize = cache[savedIndex];\n");
             writer.print("      size += CodedOutputStream.computeUInt32SizeNoTag(dataSize);\n");
             writer.print("      size += dataSize;\n");
           }
@@ -276,7 +279,8 @@ public class DataObjectHelperGen extends Generator<DataObjectModel> {
         writer.print("    }\n");
         fieldNumber++;
       }
-      writer.print("    return size;\n");
+      writer.print("    cache[baseIndex] = size;\n");
+      writer.print("    return index;\n");
       writer.print("  }\n");
       writer.print("\n");
       writer.print("}\n");
