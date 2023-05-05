@@ -46,4 +46,15 @@ public class AddressProtoConverter {
     return size;
   }
 
+  public static int computeSize2(Address obj) {
+    int size = 0;
+    if (obj.getLatitude() != null) {
+      size += CodedOutputStream.computeFloatSize(1, obj.getLatitude());
+    }
+    if (obj.getLongitude() != null) {
+      size += CodedOutputStream.computeFloatSize(2, obj.getLongitude());
+    }
+    return size;
+  }
+
 }
