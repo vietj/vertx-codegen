@@ -10,7 +10,7 @@ on:
         type: string
 jobs:
   Deploy:
-    name: Deploy to OSSRH
+    name: Deploy to Central
     runs-on: ubuntu-latest
     env:
       VERTX_NEXUS_USERNAME: ${{ secrets.VERTX_NEXUS_USERNAME }}
