@@ -1,4 +1,4 @@
-name: CI/CD-5.x
+name: CI∕CD-5.x
 on:
   workflow_call:
 jobs:
