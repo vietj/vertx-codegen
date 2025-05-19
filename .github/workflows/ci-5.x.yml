@@ -10,5 +10,5 @@ on:
     - cron: '0 5 * * *'
 jobs:
   CI_Deploy:
-    uses: ./.github/workflows/ci_deploy-5.x.yml
+    uses: ./.github/workflows/cicd-5.x.yml
     secrets: inherit

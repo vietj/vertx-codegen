@@ -1,4 +1,4 @@
-name: CI/Deploy-5.x
+name: CI/CD-5.x
 on:
   workflow_call:
 jobs:
@@ -18,10 +18,10 @@ jobs:
       jdk: ${{ matrix.jdk }}
       os: ${{ matrix.os }}
     secrets: inherit
-  Deploy:
+  CD:
     if: ${{ github.repository_owner == 'eclipse-vertx' && (github.event_name == 'push' || github.event_name == 'schedule') }}
     needs: CI
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/cd.yml
     with:
       branch: ${{ github.event.pull_request.head.sha || github.ref_name }}
       jdk: 11
