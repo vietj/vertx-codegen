@@ -9,6 +9,6 @@ on:
   schedule:
     - cron: '0 5 * * *'
 jobs:
-  CI_Deploy:
+  CI_CD:
     uses: ./.github/workflows/cicd-5.x.yml
     secrets: inherit
