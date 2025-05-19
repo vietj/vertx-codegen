@@ -13,7 +13,7 @@ on:
         type: string
 jobs:
   Test:
-    name: Run tests
+    name: Run tests (${{ inputs.os }}/${{ inputs.jdk }})
     runs-on: ${{ inputs.os }}
     steps:
       - name: Checkout
