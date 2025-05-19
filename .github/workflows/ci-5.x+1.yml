@@ -1,5 +1,4 @@
 name: vertx-codegen (5.x+1)
-run-name: vertx-codegen (${{ github.ref_name }})
 on:
   push:
     branches:
