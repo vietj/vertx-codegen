@@ -7,7 +7,7 @@ on:
     branches:
       - 5.x
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 5 * * *'
 jobs:
   CI-CD:
     uses: ./.github/workflows/ci-cd-5.x.yml
