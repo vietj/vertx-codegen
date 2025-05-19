@@ -9,6 +9,6 @@ on:
   schedule:
     - cron: '*/10 * * * *'
 jobs:
-  CI_CD:
-    uses: ./.github/workflows/ci∕cd-5.x.yml
+  CI-CD:
+    uses: ./.github/workflows/ci-cd-5.x.yml
     secrets: inherit
