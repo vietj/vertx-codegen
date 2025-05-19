@@ -3,10 +3,10 @@ run-name: vertx-codegen (${{ github.ref_name }})
 on:
   push:
     branches:
-      - 5.x
+      - master
   pull_request:
     branches:
-      - 5.x
+      - master
   schedule:
     - cron: '0 5 * * *'
 jobs:
