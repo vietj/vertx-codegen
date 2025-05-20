@@ -17,7 +17,7 @@ jobs:
     runs-on: ${{ inputs.os }}
     steps:
       - name: Debug
-        run: echo "Branch ${{ inputs.branch }}"
+        run: echo "inputs.branch = ${{ inputs.branch }} / event_name = ${{ github.event_name }}"
       - name: Checkout
         uses: actions/checkout@v2
         with:
