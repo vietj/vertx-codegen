@@ -2,10 +2,10 @@ name: vertx-codegen (5.x-stable)
 on:
   push:
     branches:
-      - '5.0'
+      - '5.[0-9]+'
   pull_request:
     branches:
-      - '5.0'
+      - '5.[0-9]+'
   schedule:
     - cron: '0 5 * * *'
 jobs:
