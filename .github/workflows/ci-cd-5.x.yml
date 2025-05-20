@@ -1,6 +1,10 @@
 name: CI-CD-5.x
 on:
   workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
 jobs:
   CI:
     strategy:
@@ -14,7 +18,7 @@ jobs:
             jdk: 21
     uses: ./.github/workflows/ci.yml
     with:
-      branch: ${{ github.event.pull_request.head.sha || github.ref_name }}
+      branch: ${{ inputs.branch }}
       jdk: ${{ matrix.jdk }}
       os: ${{ matrix.os }}
     secrets: inherit
@@ -23,6 +27,6 @@ jobs:
     needs: CI
     uses: ./.github/workflows/cd.yml
     with:
-      branch: ${{ github.event.pull_request.head.sha || github.ref_name }}
+      branch: ${{ inputs.branch }}
       jdk: 11
     secrets: inherit

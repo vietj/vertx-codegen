@@ -16,6 +16,8 @@ jobs:
     name: Run tests (${{ inputs.os }}/${{ inputs.jdk }})
     runs-on: ${{ inputs.os }}
     steps:
+      - name: Debug
+        run: echo "Branch ${{ inputs.branch }}"
       - name: Checkout
         uses: actions/checkout@v2
         with:
