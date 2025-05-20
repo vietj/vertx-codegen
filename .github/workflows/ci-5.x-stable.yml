@@ -13,4 +13,4 @@ jobs:
     uses: ./.github/workflows/ci-cd-5.x.yml
     secrets: inherit
     with:
-      branch: ${{ github.event.pull_request.head.sha || github.ref_name }}
+      branch: ${{ github.event_name == 'schedule' && vars.STABLE_BRANCH || github.event.pull_request.head.sha || github.ref_name }}
