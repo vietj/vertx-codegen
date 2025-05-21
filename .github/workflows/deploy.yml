@@ -1,4 +1,4 @@
-name: CD
+name: Deploy
 on:
   workflow_call:
     inputs:
