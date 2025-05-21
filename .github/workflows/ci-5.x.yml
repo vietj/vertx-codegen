@@ -10,7 +10,7 @@ on:
     - cron: '0 5 * * *'
 jobs:
   CI-CD:
-    uses: ./.github/workflows/ci-cd-5.x.yml
+    uses: ./.github/workflows/ci-matrix-5.x.yml
     secrets: inherit
     with:
       branch: ${{ github.event.pull_request.head.sha || github.ref_name }}
