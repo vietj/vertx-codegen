@@ -1,4 +1,4 @@
-name: vertx-codegen (5.x-stable)
+name: CI/CD (5.x-stable)
 on:
   push:
     branches:

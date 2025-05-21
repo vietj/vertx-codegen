@@ -25,7 +25,7 @@ jobs:
   CD:
     if: ${{ github.repository_owner == 'eclipse-vertx' && (github.event_name == 'push' || github.event_name == 'schedule') }}
     needs: CI
-    uses: ./.github/workflows/cd.yml
+    uses: ./.github/workflows/deploy.yml
     with:
       branch: ${{ inputs.branch }}
       jdk: 11
